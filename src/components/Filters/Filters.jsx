@@ -1,4 +1,5 @@
 import React from 'react';
+import SortBy from './SortBy';
 
 export default class Filters extends React.Component {
     render() {
@@ -8,27 +9,10 @@ export default class Filters extends React.Component {
             onChangeFilters,
             onChangePage
         } = this.props;
+        
         return (
             <form className='mb-3'>
-                {/* <div className='form-select'> */}
-                <div className='form-group'>
-                    <label htmlFor='sortColumn'>Сортировать по:</label>
-                    <select
-                        id='sortColumn'
-                        className='form-control'
-                        name='sortColumn'
-                        value={sortColumn}
-                        onChange={onChangeFilters}
-                    >
-                        <option value='releaseDate&sortOrder=desc'>Дата выпуска по убыванию</option>
-                        <option value='releaseDate'>Дата выпуска по возрастанию</option>
-                        <option value='rating'>Рейтинг по возрастанию</option>
-                        <option value='rating&sortOrder=desc'>Рейтинг по убыванию</option>
-
-
-                        {/* <option value='searchTerm'>Поиск фильма по названию или по жанру</option> */}
-                    </select>
-                </div>
+                <SortBy sortColumn={sortColumn} onChangeFilters={onChangeFilters}/>
                 <div className="btn-group" role="group" aria-label="Basic example">
                     <button 
                     type="button" 
