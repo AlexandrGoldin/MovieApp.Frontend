@@ -1,6 +1,12 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 
 export default class Titles extends React.Component {
+
+    static propTypes = {
+        searchTerm: PropTypes.string.isRequired,
+        onChangeFilters: PropTypes.func.isRequired
+    };
     render() {
         const { searchTerm, onChangeFilters } = this.props;
         return (

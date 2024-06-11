@@ -1,7 +1,12 @@
 import React from 'react'
-//import UISelect from '../UIComponents/UISelect';
+import PropTypes from 'prop-types';
 
 export default class PrimaryReleaseYear extends React.Component {
+
+    static propTypes = {
+        searchTerm: PropTypes.string.isRequired,
+        onChangeFilters: PropTypes.func.isRequired
+    };
     static defaultProps = {
         options: [
             {
@@ -56,20 +61,6 @@ export default class PrimaryReleaseYear extends React.Component {
                 ))}
             </select>
         </div>
-
-            // <UISelect
-            //     id="primary_release_year"
-            //     name="primary_release_year"
-            //     value={primary_release_year}
-            //     onChange={onChangeFilters}
-            //     lableText="Год релиза:"
-            // >
-            //     {options.map(option => (
-            //         <option key={option.value} value={option.value}>
-            //             {option.label}
-            //         </option>
-            //     ))}
-            // </UISelect>
         )
     }
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import Filters from './Filters/Filters';
 import MovieList from './Movies/MovieList';
+import Header from './Header/Header';
 
 export default class App extends React.Component {
   constructor() {
@@ -26,7 +27,7 @@ export default class App extends React.Component {
     console.log(event.target.name, event.target.value);
   };
 
-  onChangePage = page =>{
+  onChangePage = page => {
     this.setState({
       page
     });
@@ -37,30 +38,33 @@ export default class App extends React.Component {
   };
 
   render() {
-    const { filters, page, totalPages} = this.state;
+    const { filters, page, totalPages } = this.state;
     return (
-      <div className='container'>
-        <div className='row mt-4'>
-          <div className='col-4'>
-            <div className='card' style={{ width: "100%" }}>
-              <div className='card-body'>
-                <h3>Фильтры:</h3>
-                <Filters
-                  page={page}
-                  totalPages={totalPages}
-                  filters={filters}
-                  onChangeFilters={this.onChangeFilters}
-                  onChangePage={this.onChangePage}
-                />
+      <div>
+        <Header />
+        <div className='container'>
+          <div className='row mt-4'>
+            <div className='col-4'>
+              <div className='card' style={{ width: "100%" }}>
+                <div className='card-body'>
+                  <h5>Фильтры:</h5>
+                  <Filters
+                    page={page}
+                    totalPages={totalPages}
+                    filters={filters}
+                    onChangeFilters={this.onChangeFilters}
+                    onChangePage={this.onChangePage}
+                  />
+                </div>
               </div>
             </div>
-          </div>
-          <div className='col-8'>
-            <MovieList 
-            filters={filters}
-             page={page}
-             updateTotalPages={this.updateTotalPages}
-             onChangePage={this.onChangePage}/>
+            <div className='col-8'>
+              <MovieList
+                filters={filters}
+                page={page}
+                updateTotalPages={this.updateTotalPages}
+                onChangePage={this.onChangePage} />
+            </div>
           </div>
         </div>
       </div>
