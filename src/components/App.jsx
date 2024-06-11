@@ -7,9 +7,11 @@ export default class App extends React.Component {
     super()
     this.state = {
       filters: {
-        sortColumn: "rating"
+        sortColumn: "rating",
+        searchTerm: ""
       },
-      page: 1
+      page: 1,
+      totalPages: 1
     };
   }
 
@@ -26,13 +28,16 @@ export default class App extends React.Component {
 
   onChangePage = page =>{
     this.setState({
-      //page: page
       page
     });
   };
 
+  updateTotalPages = (totalPages) => {
+    this.setState({ totalPages });
+  };
+
   render() {
-    const { filters, page } = this.state;
+    const { filters, page, totalPages} = this.state;
     return (
       <div className='container'>
         <div className='row mt-4'>
@@ -42,6 +47,7 @@ export default class App extends React.Component {
                 <h3>Фильтры:</h3>
                 <Filters
                   page={page}
+                  totalPages={totalPages}
                   filters={filters}
                   onChangeFilters={this.onChangeFilters}
                   onChangePage={this.onChangePage}
@@ -50,8 +56,10 @@ export default class App extends React.Component {
             </div>
           </div>
           <div className='col-8'>
-            <MovieList filters={filters}
+            <MovieList 
+            filters={filters}
              page={page}
+             updateTotalPages={this.updateTotalPages}
              onChangePage={this.onChangePage}/>
           </div>
         </div>

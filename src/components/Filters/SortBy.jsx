@@ -1,9 +1,34 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 
 export default class SortBy extends React.Component {
+    static propTypes = {
+        sortColumn: PropTypes.string.isRequired,
+        onChangeFilters: PropTypes.func.isRequired
+    };
+    static defaultProps = {
+        options: [
+            {
+                label: "Дата выпуска по убыванию",
+                value: "releaseDate&sortOrder=desc"   
+            },
+            {
+                label: "Дата выпуска по возрастанию",
+                value: "releaseDate"    
+            },
+            {
+                label: "Рейтинг по возрастанию",
+                value: "rating"   
+            },
+            {
+                label: "Рейтинг по убыванию",
+                value: "rating&sortOrder=desc"   
+            }
+        ]    
+    };
+
   render() {
-    const {sortColumn, onChangeFilters} = this.props;
-    console.log("SortBy.props", this.props.sortColumn, this.props.onChangeFilters);   
+    const {sortColumn, onChangeFilters, options} = this.props;
     return (
         <div className='form-group'>
         <label htmlFor='sortColumn'>Сортировать по:</label>
@@ -14,13 +39,11 @@ export default class SortBy extends React.Component {
             value={sortColumn}
             onChange={onChangeFilters}
         >
-            <option value='releaseDate&sortOrder=desc'>Дата выпуска по убыванию</option>
-            <option value='releaseDate'>Дата выпуска по возрастанию</option>
-            <option value='rating'>Рейтинг по возрастанию</option>
-            <option value='rating&sortOrder=desc'>Рейтинг по убыванию</option>
-
-
-            {/* <option value='searchTerm'>Поиск фильма по названию или по жанру</option> */}
+            {options.map(option =>(
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option> 
+            ))}
         </select>
     </div>
     );
