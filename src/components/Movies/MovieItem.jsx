@@ -4,7 +4,7 @@ export default class MovieItem extends React.Component {
   render() {
     const { item } = this.props;
     return (
-      <div className='card' style={{ width: "100%" }}>
+      <div className='card'>
         <img
           className='card-img-top card-img-height'
           src={item.pictureUri}

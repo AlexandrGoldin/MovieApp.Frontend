@@ -1,4 +1,5 @@
 import React from 'react'
+import Login from './Login/Login'
 
 export default class Header extends React.Component {
     render() {
@@ -10,6 +11,7 @@ export default class Header extends React.Component {
                             <p className='nav-link'>Movie-app</p>
                         </li>
                     </ul>
+                    <Login/>
                 </div>
             </nav>
         )
