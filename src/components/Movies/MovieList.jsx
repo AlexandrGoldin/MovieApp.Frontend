@@ -40,7 +40,7 @@ export default class MovieList extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        console.log("componentDidUpdate", prevProps.page, this.props.page, this.props.filters);
+        //console.log("componentDidUpdate", prevProps.page, this.props.page, this.props.filters);
         if (this.props.filters !== prevProps.filters) {
             this.props.onChangePage(1);
             this.getMovies(this.props.filters, 1)
@@ -53,7 +53,7 @@ export default class MovieList extends React.Component {
 
     render() {
         const { movies } = this.state;
-        console.log("render");
+        //console.log("render");
         return (
             <div className='row'>
                 {movies?.map(movie => {

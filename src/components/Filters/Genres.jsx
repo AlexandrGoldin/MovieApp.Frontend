@@ -42,7 +42,7 @@ export default class Genres extends React.Component {
 
     render() {
         const { searchTerm, onChangeFilters, options} = this.props;
-        console.log("genres");
+        //console.log("genres");
         return (
 
             <div className='form-group'>

@@ -1,77 +1,37 @@
-import React from 'react'
-import { API_URL } from '../../../api/api';
+import React from 'react';
+import { Modal, ModalBody } from 'reactstrap';
+import LoginForm from './LoginForm';
 
 export default class Login extends React.Component {
-  sendPromises = () => {
-    const getRequestToken = () => {
-      return new Promise((resolve, reject) => {
-        fetch(
-          `${API_URL}/api/authenticate`,
-          {
-            method: "POST",
-            headers: {
-              "Content-type": "application/json"
-            },
-            body: JSON.stringify({
-              username: "demouser@microsoft.com",
-              password: "Pass@word1"
-            })
-          }
-        ).then(response => {
-            if(response.status < 400){
-            return response.json();
-          } else {
-            throw response;
-          }
-        })
-        .then(data =>{
-          resolve(data);
-        })
-        .catch(response => {
-          response.json().then(error =>{
-            reject(error);
-          });          
-        });
-      });
+  constructor() {
+    super();
+    this.state = {
+      showModal: false
     };
-    getRequestToken()
-    .then(data =>{
-      console.log(data);
-    })
-    .catch(error=>{
-      console.log("error", error);
-    });
+  }
 
-        // fetch(
-        //   `${API_URL}/api/authenticate`,
-        //     {
-        //     method: "POST",
-        //     headers: {
-        //       "Content-type": "application/json"
-        //    },
-        //    body: JSON.stringify( {
-        //     username: "demouser@microsoft.com",
-        //     password: "Pass@word1"
-        //    })
-        //   }
-        // ).then(response => response.json())
-        // .then(data =>{
-        //   console.log(data);
-        //  }
-        // );
-     };        
+  toggleModal = () => {
+    this.setState(prevState => ({
+      showModal: !prevState.showModal
+    }));
+  };
+
   render() {
     return (
       <div>
         <button
-        className='btn btn-success'
-        type='button'
-        onClick={this.sendPromises}
+          className='btn btn-success'
+          type='button'
+          onClick={this.toggleModal}
         >
           Login
         </button>
-        </div>
+        <Modal isOpen={this.state.showModal} toggle={this.toggleModal}>
+          <ModalBody>
+            <LoginForm updateUser={this.props.updateUser}/>
+          </ModalBody>
+        </Modal>
+      </div>
     )
   }
 }
-

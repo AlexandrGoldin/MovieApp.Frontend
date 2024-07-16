@@ -42,7 +42,7 @@ export default class PrimaryReleaseYear extends React.Component {
 
     render() {
         const { searchTerm, onChangeFilters, options } = this.props;
-        console.log("primary_release_year render");
+        //console.log("primary_release_year render");
         return (
 
             <div className='form-group'>

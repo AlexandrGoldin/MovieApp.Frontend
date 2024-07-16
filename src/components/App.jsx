@@ -2,11 +2,19 @@ import React from 'react';
 import Filters from './Filters/Filters';
 import MovieList from './Movies/MovieList';
 import Header from './Header/Header';
+import Cookies from 'universal-cookie';
+import {API_URL, fetchApi} from '../api/api';
+
+const cookies = new Cookies();
 
 export default class App extends React.Component {
   constructor() {
     super()
     this.state = {
+      username: "",
+      password: "",
+      user: null,
+      user_token: null,
       filters: {
         sortColumn: "rating",
         searchTerm: ""
@@ -16,6 +24,17 @@ export default class App extends React.Component {
     };
   }
 
+
+  updateUser = user => {
+    cookies.set("user", user, {
+      path: "/",
+      maxAge: 2592000
+    });
+    this.setState({
+      user
+    });
+  };
+  
   onChangeFilters = event => {
     const newFilters = {
       ...this.state.filters,
@@ -24,7 +43,6 @@ export default class App extends React.Component {
     this.setState({
       filters: newFilters
     });
-    console.log(event.target.name, event.target.value);
   };
 
   onChangePage = page => {
@@ -37,11 +55,50 @@ export default class App extends React.Component {
     this.setState({ totalPages });
   };
 
+  componentDidMount() {
+    const user = cookies.get("user");
+    const password = cookies.get("password");
+    if (user) {
+      fetchApi(
+        `${API_URL}/api/authenticate`,
+        {
+          method: "POST",
+          mode: "cors",
+          headers: {
+            "Content-type": "application/json"
+          },
+          body: JSON.stringify({
+            username: user.username, // "demouser@microsoft.com",              
+            password: password  // "Pass@word1" 
+          })
+        }
+      )
+        .then(user => {
+          console.log("session", user);
+          this.setState({
+            user: user
+          });
+          this.setState({
+            submitting: true
+          });
+        })
+        .catch(error => {
+          console.log("error", error);
+          this.setState({
+            submitting: false,
+            errors:{
+              base: error.error
+            }
+          });
+        })
+    }
+  }
+
   render() {
-    const { filters, page, totalPages } = this.state;
+    const { filters, page, totalPages, user } = this.state;
     return (
       <div>
-        <Header />
+        <Header user={user} updateUser={this.updateUser}/>
         <div className='container'>
           <div className='row mt-4'>
             <div className='col-4'>

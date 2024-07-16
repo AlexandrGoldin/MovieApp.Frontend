@@ -11,7 +11,7 @@ export default class Pagination extends React.Component {
     };
     render() {
         const { page, onChangePage, totalPages } = this.props;
-        console.log("Pagination", page, totalPages);
+        //console.log("Pagination", page, totalPages);
         return (
             <section className='paging'>
                 <div className="btn-group" role="group" aria-label="Basic example">

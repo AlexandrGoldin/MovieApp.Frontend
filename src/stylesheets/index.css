@@ -29,3 +29,12 @@ body {
     font-size: 14px;
     font-weight: 500; 
 }
+
+.invalid-feedback{
+   display: block; 
+}
+
+button.btn-in-form{
+    margin-top: 20px;
+}
+
