@@ -7,6 +7,9 @@ import {API_URL, fetchApi} from '../api/api';
 
 const cookies = new Cookies();
 
+export const AppContext = React.createContext()
+console.log("AppContext", AppContext);
+
 export default class App extends React.Component {
   constructor() {
     super()
@@ -17,7 +20,8 @@ export default class App extends React.Component {
       user_token: null,
       filters: {
         sortColumn: "rating",
-        searchTerm: ""
+        searchTerm: "",
+        dateRangeForFiltering: ""
       },
       page: 1,
       totalPages: 1
@@ -34,7 +38,15 @@ export default class App extends React.Component {
       user
     });
   };
-  
+
+  onLogOut = () => {
+    cookies.remove("user");
+    cookies.remove("password");
+    this.setState({
+      user: null,
+      password: null
+    });
+  }  
   onChangeFilters = event => {
     const newFilters = {
       ...this.state.filters,
@@ -73,22 +85,10 @@ export default class App extends React.Component {
           })
         }
       )
-        .then(user => {
-          console.log("session", user);
-          this.setState({
-            user: user
-          });
+      .then(user => {
+        this.updateUser(user);
           this.setState({
             submitting: true
-          });
-        })
-        .catch(error => {
-          console.log("error", error);
-          this.setState({
-            submitting: false,
-            errors:{
-              base: error.error
-            }
           });
         })
     }
@@ -97,9 +97,15 @@ export default class App extends React.Component {
   render() {
     const { filters, page, totalPages, user } = this.state;
     return (
+      <AppContext.Provider 
+      value={{
+        user: user,
+        updateUser: this.updateUser,
+        onLogOut: this.onLogOut
+        }}>
       <div>
-        <Header user={user} updateUser={this.updateUser}/>
-        <div className='container'>
+        <Header user={user}/>
+        <div className='container'> 
           <div className='row mt-4'>
             <div className='col-4'>
               <div className='card' style={{ width: "100%" }}>
@@ -125,6 +131,7 @@ export default class App extends React.Component {
           </div>
         </div>
       </div>
+      </AppContext.Provider>
     );
   }
 }
