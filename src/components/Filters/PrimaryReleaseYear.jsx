@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types';
+import UISelect from '../UIComponents/UISelect';
 
-export default class PrimaryReleaseYear extends React.Component {
+export default class PrimaryReleaseYear extends React.PureComponent {
 
     static propTypes = {
         searchTerm: PropTypes.string.isRequired,
@@ -36,18 +37,25 @@ export default class PrimaryReleaseYear extends React.Component {
             {
                 label: "2016",
                 value: "2016"
+            },
+            {
+                label: "2005-2015",
+                value: "2005, 2015"
+            },
+            {
+                label: "1995-2005",
+                value: "1995, 2005"
             }
         ]
     }
 
-    render() {
+render() {
         const { searchTerm, onChangeFilters, options } = this.props;
-        //console.log("primary_release_year render");
+        console.log("primary_release_year render");
         return (
 
-            <div className='form-group'>
-            <label htmlFor='searchTerm'>Год релиза:</label>
-            <select
+            
+            <UISelect
                 id='searchTerm'
                 className='form-control'
                 name='searchTerm'
@@ -59,8 +67,7 @@ export default class PrimaryReleaseYear extends React.Component {
                     {option.label}
                   </option> 
                 ))}
-            </select>
-        </div>
+            </UISelect>
         )
     }
 }

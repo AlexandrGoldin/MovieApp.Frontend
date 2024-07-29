@@ -1,11 +1,14 @@
 import React from 'react';
 import { API_URL, fetchApi } from '../../../api/api';
 import Cookies from 'universal-cookie';
+import classNames from 'classnames';
+import { AppContext } from "../../App";
+
 
 
 const cookies = new Cookies();
 
-export default class LoginForm extends React.Component {
+class LoginForm extends React.Component {
   state = {
     username: "",
     password: "",
@@ -101,9 +104,14 @@ export default class LoginForm extends React.Component {
         }
       }));
     } else {
-      this.onSubmit()       
+      this.onSubmit()
     }
   };
+
+  getClassForInput = key => 
+    classNames("form-control", {
+      invalid: this.state.errors[key]
+    })
 
   render() {
     const { username, password, errors, submitting } = this.state;
@@ -117,7 +125,7 @@ export default class LoginForm extends React.Component {
             <label htmlFor='username'>Пользователь</label>
             <input
               type="text"
-              className="form-control"
+              className={this.getClassForInput("username")}
               id="username"
               placeholder="Пользователь"
               name="username"
@@ -133,7 +141,7 @@ export default class LoginForm extends React.Component {
             <label htmlFor='password'>Пароль</label>
             <input
               type="password"
-              className="form-control"
+               className={this.getClassForInput("password")}
               id="password"
               placeholder="Пароль"
               name="password"
@@ -163,3 +171,17 @@ export default class LoginForm extends React.Component {
     );
   }
 }
+
+const LoginFormContainer = props => {
+  return (
+  <AppContext.Consumer>
+ { (context) => {
+  return <LoginForm updateUser={context.updateUser} {...props}/>
+ }}     
+  </AppContext.Consumer>
+  )
+};
+
+LoginFormContainer.displayName = "LoginFormContainer";
+export default LoginFormContainer;
+ 

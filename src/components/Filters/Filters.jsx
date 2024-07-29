@@ -1,14 +1,20 @@
 import React from 'react';
 import SortBy from './SortBy';
 import Pagination from './Pagination';
-import PrimaryReleaseYear from './PrimaryReleaseYear'
+import PrimaryReleaseYear from './PrimaryReleaseYear';
+//import ReleaseDateRange from './ReleaseDateRange';
 import Genres from './Genres';
 import Titles from './Titles';
 
 export default class Filters extends React.Component {
     render() {
         const {
-            filters: { sortColumn, searchTerm},
+            filters: 
+            {
+                sortColumn, 
+                searchTerm
+                //dateRangeForFiltering
+            },
             page,
             totalPages,
             onChangeFilters,
@@ -29,6 +35,10 @@ export default class Filters extends React.Component {
                 searchTerm={searchTerm}
                 onChangeFilters={onChangeFilters}
                 /> 
+                {/* <ReleaseDateRange
+                dateRangeForFiltering={dateRangeForFiltering}
+                onChangeFilters={onChangeFilters}
+                /> */}
                 <Genres
                 with_genres={searchTerm}
                 onChangeFilters={onChangeFilters}

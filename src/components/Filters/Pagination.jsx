@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types';
 
-export default class Pagination extends React.Component {
+export default class Pagination extends React.PureComponent {
     handlePageChange = (event) => {
         this.props.onChangePage(Number(event.target.value));
     };
@@ -11,13 +11,13 @@ export default class Pagination extends React.Component {
     };
     render() {
         const { page, onChangePage, totalPages } = this.props;
-        //console.log("Pagination", page, totalPages);
+        console.log("Pagination", page, totalPages);
         return (
             <section className='paging'>
-                <div className="btn-group" role="group" aria-label="Basic example">
+                <section className="btn-group" role="group" aria-label="Basic example">
                     <button
                         type="button"
-                        className="btn btn-light"
+                        className="btn btn-light-left"
                         disabled={page === 1}
                         onClick={onChangePage.bind(null, page - 1)}
                     >
@@ -28,13 +28,13 @@ export default class Pagination extends React.Component {
                     </div>
                     <button
                         type="button"
-                        className="btn btn-light"
+                        className="btn btn-light-right"
                          disabled = {page ===totalPages}
                         onClick={onChangePage.bind(null, page + 1)}
                     >
                         Вперёд
                     </button>
-                </div>
+                </section>
             </section>
         )
     }

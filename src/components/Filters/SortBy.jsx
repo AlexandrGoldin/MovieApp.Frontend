@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import UISelect from '../UIComponents/UISelect';
 
-export default class SortBy extends React.Component {
+
+export default class SortBy extends React.PureComponent {
     static propTypes = {
         sortColumn: PropTypes.string.isRequired,
         onChangeFilters: PropTypes.func.isRequired
@@ -27,26 +29,24 @@ export default class SortBy extends React.Component {
         ]    
     };
 
-  render() {
-    const {sortColumn, onChangeFilters, options} = this.props;
-    return (
-        <div className='form-group'>
-        <label htmlFor='sortColumn'>Сортировать по:</label>
-        <select
-            id='sortColumn'
-            className='form-control'
-            name='sortColumn'
-            value={sortColumn}
-            onChange={onChangeFilters}
-        >
-            {options.map(option =>(
+    render() {
+        const {sortColumn, onChangeFilters, options} = this.props;
+        console.log("---SortBy-render---")
+        return (
+            <UISelect
+                id='sortColumn'
+                className='form-control'
+                name='sortColumn'
+                value={sortColumn}
+                onChange={onChangeFilters}
+            >
+                {options.map(option =>(
               <option key={option.value} value={option.value}>
                 {option.label}
               </option> 
             ))}
-        </select>
-    </div>
-    );
-  }
+            </UISelect>
+        );
+      }
 }
 

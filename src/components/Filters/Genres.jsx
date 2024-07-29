@@ -1,66 +1,51 @@
-import React from 'react'
-import PropTypes from 'prop-types';
+import React from 'react';
+import { API_URL } from '../../api/api';
+import UISelect from '../UIComponents/UISelect';
 
-export default class Genres extends React.Component {
+export default class Genres extends React.PureComponent {
+    constructor() {
+        super();
 
-    static propTypes = {
-        searchTerm: PropTypes.string.isRequired,
-        onChangeFilters: PropTypes.func.isRequired
-    };
-    static defaultProps = {
-        options: [
-            {
-                label: "Все жанры",
-                value: ""
-            },
-            {
-                label: "Комедия",
-                value: "Комедия"
-            },
-            {
-                label: "Триллер",
-                value: "Триллер"
-            },
-            {
-                label: "Детектив",
-                value: "Детектив"
-            },
-            {
-                label: "Мелодрама",
-                value: "Мелодрама"
-            },
-            {
-                label: "Драма",
-                value: "Драма"
-            },
-            {
-                label: "Боевик",
-                value: "Боевик"
-            }
-        ]
+        this.state = {
+            genreList: []
+        };
     }
 
-    render() {
-        const { searchTerm, onChangeFilters, options} = this.props;
-        //console.log("genres");
-        return (
+    componentDidMount() {
+        const link = `${API_URL}/api/genres`;
+        fetch(link)
+            .then(response => response.json())
+            .then(data => {
+                const genreList = [{ genreName: "Все жанры", genreValue: "" }, ...data];
+                this.setState({
+                    genreList: genreList
+                });
+                console.log("genreList", genreList);
+            });
+    }
 
-            <div className='form-group'>
-            <label htmlFor='searchTerm'>Выбор жанра:</label>
-            <select
+        render() {
+        const { genreList } = this.state;
+        const { searchTerm, onChangeFilters } = this.props;
+
+        console.log("----searchTerm----", searchTerm);
+       
+        return (          
+            <UISelect
                 id='searchTerm'
                 className='form-control'
                 name='searchTerm'
                 value={searchTerm}
                 onChange={onChangeFilters}
             >
-                {options.map(option =>(
-                  <option key={option.value} value={option.value}>
-                    {option.label}
-                  </option> 
+                {genreList.map(option => (
+                    <option key={option.genreValue} value={option.genreValue}>
+                        {option.genreName}
+                    </option>
                 ))}
-            </select>
-        </div>
-        )
+            </UISelect>
+        );
     }
- }
+}
+
+

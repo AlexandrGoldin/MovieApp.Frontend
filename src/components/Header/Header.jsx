@@ -1,10 +1,10 @@
 import React from 'react'
 import Login from './Login/Login'
-import User from './User'
+import UserMenu from './UserMenu'
 
 export default class Header extends React.Component {
     render() {
-        const {user, updateUser} = this.props
+        const {user} = this.props
         return (
             <nav className='navbar navbar-dark bg-primary'>
                 <div className='container'>
@@ -13,8 +13,11 @@ export default class Header extends React.Component {
                             <p className='nav-link'>Movie-app</p>
                         </li>
                     </ul>
-                    {user?<User user={user}/>:<Login updateUser={updateUser}/>
-                    }                   
+                    {user ? (
+                        <UserMenu/>
+                    ):(
+                    <Login/>
+                    )}                   
                 </div>
             </nav>
         )
