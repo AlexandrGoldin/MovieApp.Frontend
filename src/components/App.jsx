@@ -1,9 +1,10 @@
 import React from 'react';
-import Filters from './Filters/Filters';
-import MovieList from './Movies/MovieList';
 import Header from './Header/Header';
 import Cookies from 'universal-cookie';
+import MoviesPage from './pages/MoviesPage/MoviesPage';
+import MoviePage from './pages/MoviePage/MoviePage';
 import {API_URL, fetchApi} from '../api/api';
+import {BrowserRouter, Routes, Route} from "react-router-dom";
 
 const cookies = new Cookies();
 
@@ -18,13 +19,6 @@ export default class App extends React.Component {
       password: "",
       user: null,
       user_token: null,
-      filters: {
-        sortColumn: "rating",
-        searchTerm: "",
-        dateRangeForFiltering: ""
-      },
-      page: 1,
-      totalPages: 1
     };
   }
 
@@ -47,26 +41,7 @@ export default class App extends React.Component {
       password: null
     });
   }  
-  onChangeFilters = event => {
-    const newFilters = {
-      ...this.state.filters,
-      [event.target.name]: event.target.value
-    };
-    this.setState({
-      filters: newFilters
-    });
-  };
-
-  onChangePage = page => {
-    this.setState({
-      page
-    });
-  };
-
-  updateTotalPages = (totalPages) => {
-    this.setState({ totalPages });
-  };
-
+  
   componentDidMount() {
     const user = cookies.get("user");
     const password = cookies.get("password");
@@ -95,8 +70,9 @@ export default class App extends React.Component {
   }
 
   render() {
-    const { filters, page, totalPages, user } = this.state;
+    const { user } = this.state;
     return (
+      <BrowserRouter>
       <AppContext.Provider 
       value={{
         user: user,
@@ -105,33 +81,13 @@ export default class App extends React.Component {
         }}>
       <div>
         <Header user={user}/>
-        <div className='container'> 
-          <div className='row mt-4'>
-            <div className='col-4'>
-              <div className='card' style={{ width: "100%" }}>
-                <div className='card-body'>
-                  <h5>Фильтры:</h5>
-                  <Filters
-                    page={page}
-                    totalPages={totalPages}
-                    filters={filters}
-                    onChangeFilters={this.onChangeFilters}
-                    onChangePage={this.onChangePage}
-                  />
-                </div>
-              </div>
-            </div>
-            <div className='col-8'>
-              <MovieList
-                filters={filters}
-                page={page}
-                updateTotalPages={this.updateTotalPages}
-                onChangePage={this.onChangePage} />
-            </div>
-          </div>
-        </div>
+        <Routes>
+        <Route path="/" element={<MoviesPage/>}/>
+        <Route path="/movie" element={<MoviePage/>}/>
+        </Routes>
       </div>
       </AppContext.Provider>
+      </BrowserRouter>
     );
   }
 }

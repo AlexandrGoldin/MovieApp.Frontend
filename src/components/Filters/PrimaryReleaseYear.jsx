@@ -5,7 +5,7 @@ import UISelect from '../UIComponents/UISelect';
 export default class PrimaryReleaseYear extends React.PureComponent {
 
     static propTypes = {
-        searchTerm: PropTypes.string.isRequired,
+        primaryReleaseYear: PropTypes.string.isRequired,
         onChangeFilters: PropTypes.func.isRequired
     };
     static defaultProps = {
@@ -40,26 +40,27 @@ export default class PrimaryReleaseYear extends React.PureComponent {
             },
             {
                 label: "2005-2015",
-                value: "2005, 2015"
+                value: "2005.2015"
             },
             {
                 label: "1995-2005",
-                value: "1995, 2005"
+                value: "1995.2005"
             }
         ]
     }
 
 render() {
-        const { searchTerm, onChangeFilters, options } = this.props;
-        console.log("primary_release_year render");
+        
+        const { primaryReleaseYear, onChangeFilters, options } = this.props;
+        console.log("primary_release_year render", primaryReleaseYear);
         return (
 
             
             <UISelect
-                id='searchTerm'
+                id='primaryReleaseYear'  
                 className='form-control'
-                name='searchTerm'
-                value={searchTerm}
+                name='primaryReleaseYear' 
+                value={primaryReleaseYear} 
                 onChange={onChangeFilters}
             >
                 {options.map(option =>(

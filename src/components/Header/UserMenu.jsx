@@ -1,12 +1,12 @@
 import React from "react";
 import { fetchApi, API_URL } from '../../api/api';
-import { AppContext } from "../App";
 import {
     Dropdown,
     DropdownToggle,
     DropdownMenu,
     DropdownItem
 } from "reactstrap";
+import AppContextHOC from "../HOC/AppContextHOC";
 
 class UserMenu extends React.Component {
     state = {
@@ -48,7 +48,6 @@ class UserMenu extends React.Component {
                     <img
                         width="50"
                         alt=""
-                        // className="rounded-circle" // getbootstrap for a round image
                         className="Avatar-Default-Img"
                         src={`${API_URL}${user.avatarUri}`}
                         onClick={this.toggleDropdown}
@@ -64,23 +63,8 @@ class UserMenu extends React.Component {
     }
 }
 
-const UserMenuContainer = props => {
-    return (
-        <AppContext.Consumer>
-            {(context) => {
-                return <
-                    UserMenu
-                    // user={context.onLogOut}
-                    {...context}
-                    {...props}
-                />
-                //  return <UserMenu user={context.user} {...props}/>
-            }}
-        </AppContext.Consumer>
-    )
-};
+export default AppContextHOC (UserMenu);
 
-UserMenuContainer.displayName = "UserContainer";
-export default UserMenuContainer;
+
 
 

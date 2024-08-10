@@ -5,39 +5,38 @@ import UISelect from '../UIComponents/UISelect';
 
 export default class SortBy extends React.PureComponent {
     static propTypes = {
-        sortColumn: PropTypes.string.isRequired,
+        sortBy: PropTypes.string.isRequired,
         onChangeFilters: PropTypes.func.isRequired
     };
     static defaultProps = {
         options: [
             {
-                label: "Дата выпуска по убыванию",
-                value: "releaseDate&sortOrder=desc"   
-            },
-            {
-                label: "Дата выпуска по возрастанию",
-                value: "releaseDate"    
+                label: "Рейтинг по убыванию",
+                value: "rating.desc"   
             },
             {
                 label: "Рейтинг по возрастанию",
-                value: "rating"   
+                value: "rating.asc"   
+            },           
+            {
+                label: "Дата выпуска по убыванию",
+                value: "release_date.desc"    
             },
             {
-                label: "Рейтинг по убыванию",
-                value: "rating&sortOrder=desc"   
-            }
+                label: "Дата выпуска по возрастанию",
+                value: "release_date.asc"    
+            }                  
         ]    
     };
 
     render() {
-        const {sortColumn, onChangeFilters, options} = this.props;
-        console.log("---SortBy-render---")
+        const {sortBy, onChangeFilters, options} = this.props;
         return (
             <UISelect
-                id='sortColumn'
+                id='sortBy'
                 className='form-control'
-                name='sortColumn'
-                value={sortColumn}
+                name='sortBy'
+                value={sortBy}
                 onChange={onChangeFilters}
             >
                 {options.map(option =>(
@@ -47,6 +46,6 @@ export default class SortBy extends React.PureComponent {
             ))}
             </UISelect>
         );
-      }
+    }
 }
 

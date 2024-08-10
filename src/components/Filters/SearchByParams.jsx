@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types';
 
-export default class Titles extends React.Component {
+export default class SearchByParams extends React.Component {
 
     static propTypes = {
         searchTerm: PropTypes.string.isRequired,
@@ -19,7 +19,7 @@ export default class Titles extends React.Component {
                     name='searchTerm'
                     value={searchTerm}
                     onChange={onChangeFilters}
-                    placeholder="Название фильма / Жанр / Страна / Дата редиза"
+                    placeholder="Название фильма / Жанр / Страна"
                 >
                 </input>
             </div>

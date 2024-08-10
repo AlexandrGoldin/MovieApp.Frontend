@@ -2,7 +2,7 @@ import React from 'react';
 import { API_URL, fetchApi } from '../../../api/api';
 import Cookies from 'universal-cookie';
 import classNames from 'classnames';
-import { AppContext } from "../../App";
+import AppContextHOC from "../../HOC/AppContextHOC";
 
 
 
@@ -172,16 +172,5 @@ class LoginForm extends React.Component {
   }
 }
 
-const LoginFormContainer = props => {
-  return (
-  <AppContext.Consumer>
- { (context) => {
-  return <LoginForm updateUser={context.updateUser} {...props}/>
- }}     
-  </AppContext.Consumer>
-  )
-};
+export default AppContextHOC (LoginForm);
 
-LoginFormContainer.displayName = "LoginFormContainer";
-export default LoginFormContainer;
- 

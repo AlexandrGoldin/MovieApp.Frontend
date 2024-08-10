@@ -7,6 +7,7 @@ body {
     background: #fdfdfd;
 }
 
+/* for class Header */
 .nav-link{
     font-size: 20px;
     font-weight: 600;
@@ -18,6 +19,7 @@ body {
     object-fit: cover;
 }
 
+/*for class LoginForm */
 .form-group{
     font-size: 18px;
     font-weight: 500;
@@ -52,5 +54,10 @@ button.btn-in-form{
 
 input.invalid{
     border-color: var(--main-error-color); 
+}
+
+/*for class Genres */
+button.btn-outline-dark{
+    margin-top: 35px;
 }
 
