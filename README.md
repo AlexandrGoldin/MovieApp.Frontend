@@ -9,5 +9,5 @@ ____________
 _______
 ### The Login page. <ins>To authorize use "username": "demouser@microsoft.com", and"password": "Pass@word1".<ins> ![Authorize](https://github.com/user-attachments/assets/f7493e23-dbd2-4ddc-87a3-f5f0799230eb)
 _________
-### To log out, click on the user's avatar.![logout](https://github.com/user-attachments/assets/bfc3f46b-d7d4-4823-b301-1bcad9b9c91d)
+### To log out, click on the user's avatar and click the "Выйти" button.![logout](https://github.com/user-attachments/assets/bfc3f46b-d7d4-4823-b301-1bcad9b9c91d)
 
