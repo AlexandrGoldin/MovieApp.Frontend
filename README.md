@@ -7,3 +7,4 @@ _______
 ### <ins>To authorize use "username": "demouser@microsoft.com", and"password": "Pass@word1".<ins>
 ____________
 ### The main page with sort, filters end paging. ![main page with filters](https://github.com/user-attachments/assets/b3e01035-0059-464e-ba90-bca93b3036ab)
+### The Login page. ![Authorize](https://github.com/user-attachments/assets/d9110282-479f-4a9a-b5e1-b8767294d285)
