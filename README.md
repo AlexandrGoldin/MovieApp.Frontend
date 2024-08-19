@@ -4,4 +4,4 @@
 _______
 ### This application launches successfully but not all functionality is implemented(the project is in development and not finished).
 ### At the moment, the functionality for the main page has been implemented. Authentication and authorization, sending and displaying a list of films have been implemented. Search, sorting, filtering, pagination. Drop-down list, checkboxes used. Sending a list of genres and a list of countries. 
-### <u>To authorize use "username": "demouser@microsoft.com", and"password": "Pass@word1".</u>
+### <ins>To authorize use "username": "demouser@microsoft.com", and"password": "Pass@word1".<ins>
