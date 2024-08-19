@@ -1,5 +1,5 @@
-# MovieApp.Fpontend  
-####  This MovieApp.Fpontend app is on React.js and Bootstrap 5.
+# MovieApp.Frontend  
+####  This MovieApp.Frontend app is on React.js and Bootstrap 5.
 ### To run the MovieAppOnWeb SPA you need to run together with MovieApp.Backend. https://github.com/AlexandrGoldin/MovieApp.Backend
 _______
 ### This application launches successfully but not all functionality is implemented(the project is in development and not finished).
