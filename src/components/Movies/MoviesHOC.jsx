@@ -34,7 +34,6 @@ const withMoviesHOC = (Component) =>
                     queryStringParams.withCountries = withCountries.join(",");
                 }     
                 const link = `${API_URL}/api/movies?${queryString.stringify(queryStringParams)}`;
-                // const link = `${API_URL}/api/movies?searchTerm=${searchTerm}&sortBy=${sortBy}&primaryReleaseYear=${primaryReleaseYear}&withGenres=${withGenres}&page=${page}&pageSize=${pageSize}`;
             await fetch(link)            
             .then(response => {
                     if (response.status >= 400 && response.status < 600) {
