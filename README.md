@@ -8,7 +8,7 @@ _______
 ____________
 ### The main page with sort, filters end paging. ![main page with filters](https://github.com/user-attachments/assets/2e25f9d5-3b13-483c-9a1a-cc80a054999b)
 _______
-### The Login page. <ins>To authorize use "username": "demouser@microsoft.com", and"password": "Pass@word1".<ins> ![Authorize](https://github.com/user-attachments/assets/d9110282-479f-4a9a-b5e1-b8767294d285)
+### The Login page. <ins>To authorize use "username": "demouser@microsoft.com", and"password": "Pass@word1".<ins> ![Authorize](https://github.com/user-attachments/assets/f7493e23-dbd2-4ddc-87a3-f5f0799230eb)
 _________
 ### To log out, click on the user's avatar. ![logout](https://github.com/user-attachments/assets/d8800a36-8134-423c-b3ae-bcd9180ca544)
 
