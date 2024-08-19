@@ -6,4 +6,4 @@ _______
 ### At the moment, the functionality for the main page has been implemented. Authentication and authorization, sending and displaying a list of films have been implemented. Search, sorting, filtering, pagination. Drop-down list, checkboxes used. Sending a list of genres and a list of countries. 
 ### <ins>To authorize use "username": "demouser@microsoft.com", and"password": "Pass@word1".<ins>
 ____________
-### Main page with sort, filters end paging. ![main page with filters](https://github.com/user-attachments/assets/b3e01035-0059-464e-ba90-bca93b3036ab)
+### The main page with sort, filters end paging. ![main page with filters](https://github.com/user-attachments/assets/b3e01035-0059-464e-ba90-bca93b3036ab)
