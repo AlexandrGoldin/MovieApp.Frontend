@@ -27,4 +27,3 @@ export const fetchApi = (url, options = {}) => {
     });
 };
 
-
