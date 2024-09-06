@@ -3,7 +3,7 @@
  ### This application launches successfully but not all functionality is implemented(the project is in development and not finished).
  ### To run the MovieApp.Frontend  SPA you need to run together with MovieAppOnWeb.Backend.(https://github.com/AlexandrGoldin/MovieAppOnWeb.Backend). 
  ### Developed in Visual Studio Code Version: 1.92.2
- #### This is the backend of the app for the MovieAppOnWeb demo site.
+ #### This is the frontend of the app for the MovieAppOnWeb demo site.
  ## Stack:
 * React.js
 * React-router-dom
