@@ -21,8 +21,7 @@ export default class App extends React.Component {
       user_token: null,
     };
   }
-
-
+ 
   updateUser = user => {
     cookies.set("user", user, {
       path: "/",
@@ -44,6 +43,7 @@ export default class App extends React.Component {
   
   componentDidMount() {
     const user = cookies.get("user");
+    console.log("--user--", user)
     const password = cookies.get("password");
     if (user) {
       fetchApi(
@@ -83,7 +83,7 @@ export default class App extends React.Component {
         <Header user={user}/>
         <Routes>
         <Route path="/" element={<MoviesPage/>}/>
-        <Route path="/movie" element={<MoviePage/>}/>
+        <Route path="/api/movies/:id" element={<MoviePage/>}/>
         </Routes>
       </div>
       </AppContext.Provider>

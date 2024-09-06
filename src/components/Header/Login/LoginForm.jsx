@@ -1,10 +1,8 @@
 import React from 'react';
-import { API_URL, fetchApi } from '../../../api/api';
+import CallApi from '../../../api/api';
 import Cookies from 'universal-cookie';
 import classNames from 'classnames';
 import AppContextHOC from "../../HOC/AppContextHOC";
-
-
 
 const cookies = new Cookies();
 
@@ -57,22 +55,14 @@ class LoginForm extends React.Component {
     this.setState({
       submitting: true
     });
-    fetchApi(
-      `${API_URL}/api/authenticate`,
-      {
-        method: "POST",
-        mode: "cors",
-        headers: {
-          "Content-type": "application/json"
-        },
-        body: JSON.stringify({
-          username: this.state.username, // "demouser@microsoft.com",              
-          password: this.state.password  // "Pass@word1" 
-        })
+    return CallApi.post("/api/authenticate", {
+      body: {
+        username: this.state.username, // "demouser@microsoft.com",              
+        password: this.state.password  // "Pass@word1" 
       }
-    )
+    }) 
     .then(data => {
-      console.log("session", data);
+      console.log("--session--", data);
       this.props.updateUser(data);
       this.setState({
         submitting: true

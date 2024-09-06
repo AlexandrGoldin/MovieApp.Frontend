@@ -1,54 +1,46 @@
 import React from 'react';
-import { API_URL } from '../../api/api';
-import queryString from 'query-string';
+import CallApi from '../../api/api';
 
-const withMoviesHOC = (Component) => 
+const withMoviesHOC = (Component) =>
     class MoviesHOC extends React.Component {
-    constructor() {
-        super();
+        constructor() {
+            super();
 
-        this.state = {
-            movies: [],
-        };
-    }
+            this.state = {
+                movies: [],
+            };
+        }
 
-            getMovies = async (filters, page) => {
-                const pageSize = 6;
-                const { sortBy, primaryReleaseYear, searchTerm, 
-                    withGenres, withCountries} = filters;
-                const { updateTotalPages } = this.props;
-                const queryStringParams = {
-                    api_url: API_URL,
-                    searchTerm,
-                    sortBy,
-                    primaryReleaseYear,
-                    withGenres,
-                    withCountries,
-                    page,
-                    pageSize,
-                }
-                if(withGenres.length > 0){
-                    queryStringParams.withGenres = withGenres.join(",");
-                }
-                if(withCountries.length > 0){
-                    queryStringParams.withCountries = withCountries.join(",");
-                }     
-                const link = `${API_URL}/api/movies?${queryString.stringify(queryStringParams)}`;
-            await fetch(link)            
-            .then(response => {
-                    if (response.status >= 400 && response.status < 600) {
-                        throw new Error("Bad response from server");
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    this.setState({
-                        movies: data.items,
-                    });
-                    updateTotalPages(data.totalPages);
-                }).catch((error) => {
-                    console.log(error)
+        getMovies = (filters, page) => {
+            const pageSize = 6;
+            const { sortBy, primaryReleaseYear, searchTerm,
+                withGenres, withCountries } = filters;
+            const { updateTotalPages } = this.props;
+            const queryStringParams = {
+                searchTerm,
+                sortBy,
+                primaryReleaseYear,
+                withGenres,
+                withCountries,
+                page,
+                pageSize,
+            };
+            if (withGenres.length > 0) {
+                queryStringParams.withGenres = withGenres.join(",");
+            }
+            if (withCountries.length > 0) {
+                queryStringParams.withCountries = withCountries.join(",");
+            }
+            CallApi.get("/api/movies", {
+                params: queryStringParams
+            }).then(data => {
+                this.setState({
+                    movies: data.items
                 });
+                updateTotalPages(data.totalPages);
+            }).catch((error) => {
+                console.log(error)
+            });
         }
 
         componentDidMount() {
@@ -70,6 +62,7 @@ const withMoviesHOC = (Component) =>
 
         render() {
             const { movies } = this.state;
+            console.log("--movies--", {movies})
             return (
                 <Component movies={movies} />
             );

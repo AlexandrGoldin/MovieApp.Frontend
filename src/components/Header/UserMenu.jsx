@@ -23,6 +23,9 @@ class UserMenu extends React.Component {
         fetchApi(`${API_URL}/api/User/Logout`, {
             method: "DELETE",
             mode: "cors",
+            headers: {
+                    "Content-type": "application/json"
+            }
         })
             .then(() => {
                 this.props.onLogOut();
