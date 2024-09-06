@@ -6,3 +6,7 @@
  #### This is the backend of the app for the MovieAppOnWeb demo site.
  ________
  ### Main page with filters ![main page with filters](https://github.com/user-attachments/assets/54da5681-5997-4b34-bdf9-4805bf6f5d8a)
+ _________________
+ ### Authorize 
+![Authorize](https://github.com/user-attachments/assets/defa7bd3-c442-4a01-8f08-3a63427dff45)
+______________
