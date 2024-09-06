@@ -17,4 +17,4 @@
  ### Modal authorization window 
 ![Authorize](https://github.com/user-attachments/assets/defa7bd3-c442-4a01-8f08-3a63427dff45)
 ______________
-### Page with search, filters, sorting, paging and Logout ![logout2](https://github.com/user-attachments/assets/fd90854f-cdc1-4394-a15b-9d700cc2f3ee)
+### Page with search, filters, sorting, paging and a button to Log out ![logout2](https://github.com/user-attachments/assets/fd90854f-cdc1-4394-a15b-9d700cc2f3ee)
