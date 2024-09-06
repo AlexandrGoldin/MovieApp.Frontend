@@ -4,6 +4,13 @@
  ### To run the MovieApp.Frontend  SPA you need to run together with MovieAppOnWeb.Backend.(https://github.com/AlexandrGoldin/MovieAppOnWeb.Backend). 
  ### Developed in Visual Studio Code Version: 1.92.2
  #### This is the backend of the app for the MovieAppOnWeb demo site.
+ ## Stack:
+* React.js
+* React-router-dom
+* universal-cookie
+* bootstrap 5
+* reactstrap 9.2.2
+* query-string 9.1.0.
  ________
  ### Main page with filters, sorting, paging. ![main page with filters end sorting](https://github.com/user-attachments/assets/c3133099-e316-43ca-8895-3afdf96b6190)
  _________________
