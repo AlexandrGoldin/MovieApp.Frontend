@@ -5,7 +5,7 @@
  ### Developed in Visual Studio Code Version: 1.92.2
  #### This is the backend of the app for the MovieAppOnWeb demo site.
  ________
- ### Main page with filters ![main page with filters end sorting](https://github.com/user-attachments/assets/c3133099-e316-43ca-8895-3afdf96b6190)
+ ### Main page with filters, sorting, paging. ![main page with filters end sorting](https://github.com/user-attachments/assets/c3133099-e316-43ca-8895-3afdf96b6190)
  _________________
  ### Authorize 
 ![Authorize](https://github.com/user-attachments/assets/defa7bd3-c442-4a01-8f08-3a63427dff45)
