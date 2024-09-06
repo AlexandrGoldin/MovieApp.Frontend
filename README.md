@@ -7,7 +7,7 @@
  ________
  ### Main page with filters, sorting, paging. ![main page with filters end sorting](https://github.com/user-attachments/assets/c3133099-e316-43ca-8895-3afdf96b6190)
  _________________
- ### modal authorization window 
+ ### Modal authorization window 
 ![Authorize](https://github.com/user-attachments/assets/defa7bd3-c442-4a01-8f08-3a63427dff45)
 ______________
 ### logout ![logout](https://github.com/user-attachments/assets/b129302a-0561-4680-9fdb-324390c402fc)
