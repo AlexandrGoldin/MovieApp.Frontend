@@ -8,7 +8,8 @@ export const fetchApi = (url, options = {}) => {
             .then(response => {
                 if (response.status === 201 || response.status === 204) {
                     resolve(null);
-                } else if (response.status < 400) {
+                 } else if (response.status < 400) {
+                console.log("fetchApi_response.status", response.status);
                     return response.json();
                 } else {
                     throw response;
@@ -33,10 +34,8 @@ export default class CallApi {
     static get(url, options = {}) {
         const { params = {} } = options;
         const queryStringParams = {
-            api_url: API_URL,
             ...params
-        };
-        
+        };       
         return fetchApi(`${API_URL}${url}?${queryString.stringify(queryStringParams)}`,
             {
                 mode: "cors",
@@ -46,10 +45,22 @@ export default class CallApi {
             }
         );
     }
+
+    static getById(url) {
+             
+        return fetchApi(`${API_URL}${url}`,
+            {
+                mode: "cors",
+                headers: {
+                    "Content-type": "application/json"
+                }
+            }
+        );
+    }
+   
     static post(url, options = {}) {
-        const { params = {}, body = {}} = options;
+        const { params = {}, body = {}} = options;      
         const queryStringParams = {
-            api_url: API_URL,
             ...params
         };
         return fetchApi(`${API_URL}${url}?${queryString.stringify(queryStringParams)}`,
@@ -64,4 +75,32 @@ export default class CallApi {
         );
     }
 }
+
+// export const fetchApi = (url, options = {}) => {
+//     return new Promise((resolve, reject) => {
+//         fetch(url, options)
+//             .then(response => {
+//                 if (response.status === 201 || response.status === 204) {
+//                     resolve(null);
+//                 // } else if (response.status < 400) {
+//                 console.log("fetchApi_response.status", response.status)
+//                     return response.json();
+//                 } else {
+//                     throw response;
+//                 }
+//             })
+//             .then(data => {
+//                 resolve(data);
+//             })
+//             .catch(response => {
+//                 if (response.status !== 201 || response.status !== 204) {
+//                     response.json().then(error => {
+//                         reject(error);
+//                     });
+//                 } else {
+//                     reject({ error: "No content" });
+//                 }
+//             });
+//     });
+// };
 

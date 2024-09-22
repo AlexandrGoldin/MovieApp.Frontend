@@ -14,17 +14,7 @@ const withAppContext = Component =>
 
 export default withAppContext;
 
-// export default Component =>
-//     class AppContextHOC extends React.Component {
-//         render() {
-//             return (
-//                 <AppContext.Consumer>
-//                     {context => <Component {...this.props} {...context} />}
-//                     )
-//                 </AppContext.Consumer>
-//             );
-//         }
-//     }; 
+
 
  
     
